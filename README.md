@@ -10,6 +10,7 @@
 * Alfred[WIP]
 * Adobe[WIP]
 * Mac[WIP]
+* iTerm2[WIP]
 
 
 ### knowledge
