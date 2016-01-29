@@ -2,6 +2,7 @@
 
 ## setting file list
 
+* Adobe Photoshop
 * Alfred
 * Better Touch Tool
 * Fire gesture
@@ -9,11 +10,14 @@
 * Karabiner
 * Tab Mix Plus
 * Xtra Finder
-* Adobe[WIP]
 * Mac[WIP]
 
 
 ### knowledge
+
+#### Adobe Photoshop
+
+https://helpx.adobe.com/jp/photoshop/kb/cq04241937.html
 
 #### Alfred
 
