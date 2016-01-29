@@ -2,18 +2,22 @@
 
 ## setting file list
 
+* Alfred
 * Better Touch Tool
 * Fire gesture
 * iTerm2
 * Karabiner
 * Tab Mix Plus
 * Xtra Finder
-* Alfred[WIP]
 * Adobe[WIP]
 * Mac[WIP]
 
 
 ### knowledge
+
+#### Alfred
+
+https://www.alfredapp.com/help/advanced/sync/
 
 #### iTerm2
 
