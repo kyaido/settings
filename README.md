@@ -5,6 +5,7 @@
 * Adobe Photoshop
 * Alfred
 * Better Touch Tool
+* Clipy(snippets)
 * Fire gesture
 * iTerm2
 * Karabiner

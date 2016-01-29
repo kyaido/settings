@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<folders>
+    <folder>
+        <title>utility</title>
+        <snippets>
+            <snippet>
+                <title>mail</title>
+                <content>kaido@team-lab.com</content>
+            </snippet>
+            <snippet>
+                <title>gmail</title>
+                <content>kamehameha1985@gmail.com</content>
+            </snippet>
+            <snippet>
+                <title>line</title>
+                <content>——————————</content>
+            </snippet>
+            <snippet>
+                <title>python local server</title>
+                <content>python -m SimpleHTTPServer</content>
+            </snippet>
+            <snippet>
+                <title>browser-sync</title>
+                <content>browser-sync start --server --files "**/*.css, **/*.html, **/*.js"</content>
+            </snippet>
+        </snippets>
+    </folder>
+</folders>
