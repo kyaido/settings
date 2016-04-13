@@ -12,6 +12,6 @@ $cli set remap.fnletter_to_ctrlletter 1
 /bin/echo -n .
 $cli set option.vimode_control_hjkl 1
 /bin/echo -n .
-$cli set private.app_chrome_command_to_ctru 1
+$cli set private.change_window_switch_key 1
 /bin/echo -n .
 /bin/echo
