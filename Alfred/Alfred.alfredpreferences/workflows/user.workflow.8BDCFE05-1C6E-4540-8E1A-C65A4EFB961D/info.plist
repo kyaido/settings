@@ -4,8 +4,6 @@
 <dict>
 	<key>bundleid</key>
 	<string>de.leenno.terminalfinder</string>
-	<key>category</key>
-	<string>Tools</string>
 	<key>connections</key>
 	<dict>
 		<key>2B77D4CA-C635-410A-B0FB-7819E0CCD85E</key>
@@ -100,7 +98,7 @@
 	<key>createdby</key>
 	<string>LeEnno</string>
 	<key>description</key>
-	<string>Open currently selected Finder window in Terminal and vice versa</string>
+	<string>Open currently selected Finder (or Path Finder) window in Terminal (or iTerm2) and vice versa</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -132,7 +130,23 @@
 			<key>config</key>
 			<dict>
 				<key>applescript</key>
-				<string>on alfred_script(q)	tell application "Finder"		set pathList to (quoted form of POSIX path of (folder of the front window as alias))	end tell		tell application "System Events"		if not (exists (processes where name is "Terminal")) then			do shell script "open -a Terminal " &amp; pathList		else			tell application "Terminal"				activate				tell application "System Events" to tell process "Terminal.app" to keystroke "t" using command down				do script ("cd " &amp; pathList) in first window			end tell		end if	end tellend alfred_script</string>
+				<string>on alfred_script(q)
+  tell application "Finder"
+    set pathList to (quoted form of POSIX path of (folder of the front window as alias))
+  end tell
+  
+  tell application "System Events"
+    if not (exists (processes where name is "Terminal")) then
+      do shell script "open -a Terminal " &amp; pathList
+    else
+      tell application "Terminal"
+        activate
+        tell application "System Events" to tell process "Terminal.app" to keystroke "t" using command down
+        do script ("cd " &amp; pathList) in first window
+      end tell
+    end if
+  end tell
+end alfred_script</string>
 				<key>cachescript</key>
 				<false/>
 			</dict>
@@ -169,7 +183,10 @@
 			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(q)
-	tell application "Terminal"		do script "open -a Finder ./" in first window	end tellend alfred_script</string>
+  tell application "Terminal"
+    do script "open -a Finder ./" in first window
+  end tell
+end alfred_script</string>
 				<key>cachescript</key>
 				<false/>
 			</dict>
@@ -206,8 +223,34 @@
 			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(q)
-	tell application "Finder"		set pathList to (quoted form of POSIX path of (folder of the front window as alias))	end tell		tell application "System Events"		set isRunning to (exists (processes where name is "iTerm"))	end tell		tell application "iTerm"		set termCount to count of terminals				if termCount is 0 then			set myTerm to (make new terminal)		else			set myTerm to the first terminal		end if				tell myTerm			if not isRunning and termCount is not 0 then				set mySession to current session			else				set mySession to (launch session "Default")			end if			tell mySession to write text "cd " &amp; pathList					end tell
-		activate	end tellend alfred_script</string>
+  
+  tell application "Finder"
+    set pathList to (quoted form of POSIX path of (folder of the front window as alias))
+    set command to "clear; cd " &amp; pathList
+  end tell
+  
+  tell application "System Events"
+    -- some versions might identify as "iTerm2" instead of "iTerm"
+    set isRunning to (exists (processes where name is "iTerm")) or (exists (processes where name is "iTerm2"))
+  end tell
+  
+  tell application "iTerm"
+    activate
+    set hasNoWindows to ((count of windows) is 0)
+    if isRunning and hasNoWindows then
+      create window with default profile
+    end if
+    select first window
+    
+    tell the first window
+      if isRunning and hasNoWindows is false then
+        create tab with default profile
+      end if
+      tell current session to write text command
+    end tell
+  end tell
+  
+end alfred_script</string>
 				<key>cachescript</key>
 				<false/>
 			</dict>
@@ -223,10 +266,12 @@
 			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(q)
-	tell application "iTerm"
-		tell the current session of current terminal
-			write text "open -a Finder ./"		end tell
-	end tellend alfred_script</string>
+  tell application "iTerm"
+    tell the current session of current window
+      write text "open -a Finder ./"
+    end tell
+  end tell
+end alfred_script</string>
 				<key>cachescript</key>
 				<false/>
 			</dict>
@@ -263,22 +308,22 @@
 			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(q)
-	tell application "Path Finder"
-		set pathList to POSIX path of the target of the front finder window
-	end tell
+  tell application "Path Finder"
+    set pathList to POSIX path of the target of the front finder window
+  end tell
 
-	tell application "System Events"
-		if not (exists (processes where name is "Terminal")) then
-			do shell script "open -a Terminal " &amp; quoted form of pathList
-		else
-			tell application "Terminal"
-				activate
-				delay 0.25
-				tell application "System Events" to tell process "Terminal" to keystroke "t" using command down
-				do script ("cd " &amp; quoted form of pathList &amp; "; clear") in first window
-			end tell
-		end if
-	end tell
+  tell application "System Events"
+    if not (exists (processes where name is "Terminal")) then
+      do shell script "open -a Terminal " &amp; quoted form of pathList
+    else
+      tell application "Terminal"
+        activate
+        delay 0.25
+        tell application "System Events" to tell process "Terminal" to keystroke "t" using command down
+        do script ("cd " &amp; quoted form of pathList &amp; "; clear") in first window
+      end tell
+    end if
+  end tell
 end alfred_script</string>
 				<key>cachescript</key>
 				<false/>
@@ -337,7 +382,10 @@ end alfred_script</string>
 			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(q)
-	tell application "Terminal"		do script "open -a 'Path Finder' ./" in first window	end tellend alfred_script</string>
+  tell application "Terminal"
+    do script "open -a 'Path Finder' ./" in first window
+  end tell
+end alfred_script</string>
 				<key>cachescript</key>
 				<false/>
 			</dict>
@@ -374,40 +422,33 @@ end alfred_script</string>
 			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(q)
-	tell application "Path Finder"
-		set pathList to POSIX path of the target of the front finder window
-	end tell
+  tell application "Path Finder"
+    set pathList to POSIX path of the target of the front finder window
+    set pathList to quoted form of pathList
+    set command to "clear; cd " &amp; pathList
+  end tell
+  
+  tell application "System Events"
+    -- some versions might identify as "iTerm2" instead of "iTerm"
+    set isRunning to (exists (processes where name is "iTerm")) or (exists (processes where name is "iTerm2"))
+  end tell
+  
+  tell application "iTerm"
+    activate
+    set hasNoWindows to ((count of windows) is 0)
+    if isRunning and hasNoWindows then
+      create window with default profile
+    end if
+    select first window
+    
+    tell the first window
+      if isRunning and hasNoWindows is false then
+        create tab with default profile
+      end if
+      tell current session to write text command
+    end tell
+  end tell
 
-	tell application "System Events"
-		set isRunning to (exists (processes where name is "iTerm"))
-	end tell
-
-	tell application "iTerm"
-		activate
-		set termCount to count of terminals
-		
-		if termCount is 0 then
-			set _term to (make new terminal)
-		else
-			if isRunning then
-				set _term to the first terminal
-				tell i term application "System Events" to tell process "Terminal.app" to keystroke "t" using command down
-			end if
-		end if
-		
-		try
-			set _session to current session of current terminal
-		on error
-			tell _term
-				launch session "Default"
-				set _session to current session
-			end tell
-		end try
-		
-		tell _session
-			write text "cd " &amp; quoted form of pathList &amp; "; clear"
-		end tell
-	end tell
 end alfred_script</string>
 				<key>cachescript</key>
 				<false/>
@@ -424,10 +465,12 @@ end alfred_script</string>
 			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(q)
-	tell application "iTerm"
-		tell the current session of current terminal
-			write text "open -a 'Path Finder' ./"		end tell
-	end tellend alfred_script</string>
+  tell application "iTerm"
+    tell the current session of current window
+      write text "open -a 'Path Finder' ./"
+    end tell
+  end tell
+end alfred_script</string>
 				<key>cachescript</key>
 				<false/>
 			</dict>
