@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
 <root>
   <item>
-    <name>[private.xml] Option+Tab to Command+F1</name>
+    <name>[private.xml] Command+backquote to Command+F1</name>
     <identifier>private.change_window_switch_key</identifier>
+    <!-- Atom use this shortcut on default -->
+    <not>Atom</not>
     <autogen>
       __KeyToKey__
-      KeyCode::TAB,  ModifierFlag::OPTION_L,
-      KeyCode::F1,   ModifierFlag::COMMAND_L
+      KeyCode::BACKQUOTE,  ModifierFlag::COMMAND_L,
+      KeyCode::F1,         ModifierFlag::COMMAND_L
     </autogen>
   </item>
 </root>
