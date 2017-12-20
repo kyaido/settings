@@ -10,12 +10,15 @@
       },
       "BTTTriggers" : [
         {
-          "BTTTriggerType" : 102,
-          "BTTTriggerTypeDescription" : "3 Finger Swipe Up",
+          "BTTTriggerType" : 104,
+          "BTTTriggerTypeDescription" : "3 Finger Tap",
           "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
-          "BTTShortcutToSend" : "55,13",
+          "BTTPredefinedActionType" : 2,
+          "BTTPredefinedActionName" : "CMD(⌘)+Click",
           "BTTEnabled" : 1,
-          "BTTOrder" : 0
+          "BTTOrder" : 2,
+          "BTTIconData" : "",
+          "BTTAlternateIconData" : ""
         },
         {
           "BTTTriggerType" : 4,
@@ -24,7 +27,9 @@
           "BTTPredefinedActionType" : 2,
           "BTTPredefinedActionName" : "CMD(⌘)+Click",
           "BTTEnabled" : 1,
-          "BTTOrder" : 0
+          "BTTOrder" : 0,
+          "BTTIconData" : "",
+          "BTTAlternateIconData" : ""
         },
         {
           "BTTTriggerType" : 16,
@@ -33,15 +38,9 @@
           "BTTPredefinedActionType" : 77,
           "BTTPredefinedActionName" : "3F Swipe Left (Page Back)",
           "BTTEnabled" : 1,
-          "BTTOrder" : 2
-        },
-        {
-          "BTTTriggerType" : 7,
-          "BTTTriggerTypeDescription" : "2 Finger Swipe Up",
-          "BTTTriggerClass" : "BTTTriggerTypeMagicMouse",
-          "BTTShortcutToSend" : "55,13",
-          "BTTEnabled" : 1,
-          "BTTOrder" : 1
+          "BTTOrder" : 1,
+          "BTTIconData" : "",
+          "BTTAlternateIconData" : ""
         },
         {
           "BTTTriggerType" : 17,
@@ -50,24 +49,33 @@
           "BTTPredefinedActionType" : 78,
           "BTTPredefinedActionName" : "3F Swipe Right (Page Forward)",
           "BTTEnabled" : 1,
-          "BTTOrder" : 3
+          "BTTOrder" : 2,
+          "BTTIconData" : "",
+          "BTTAlternateIconData" : ""
         },
         {
           "BTTTriggerType" : 110,
           "BTTTriggerTypeDescription" : "4 Finger Tap",
           "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
+          "BTTPredefinedActionType" : -1,
+          "BTTPredefinedActionName" : "No Action",
           "BTTShortcutToSend" : "55,15",
           "BTTEnabled" : 1,
-          "BTTOrder" : 1
+          "BTTOrder" : 1,
+          "BTTIconData" : "",
+          "BTTAlternateIconData" : ""
         },
         {
-          "BTTTriggerType" : 104,
-          "BTTTriggerTypeDescription" : "3 Finger Tap",
+          "BTTTriggerType" : 102,
+          "BTTTriggerTypeDescription" : "3 Finger Swipe Up",
           "BTTTriggerClass" : "BTTTriggerTypeTouchpadAll",
-          "BTTPredefinedActionType" : 2,
-          "BTTPredefinedActionName" : "CMD(⌘)+Click",
+          "BTTPredefinedActionType" : -1,
+          "BTTPredefinedActionName" : "No Action",
+          "BTTShortcutToSend" : "55,13",
           "BTTEnabled" : 1,
-          "BTTOrder" : 2
+          "BTTOrder" : 0,
+          "BTTIconData" : "",
+          "BTTAlternateIconData" : ""
         }
       ]
     },
