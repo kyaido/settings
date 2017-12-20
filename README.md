@@ -6,11 +6,8 @@
 * Alfred
 * Better Touch Tool
 * Clipy(snippets)
-* Fire gesture
 * iTerm2
 * Karabiner
-* Tab Mix Plus
-* Xtra Finder
 * Mac[WIP]
 
 
