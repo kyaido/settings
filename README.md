@@ -25,6 +25,7 @@ https://www.alfredapp.com/help/advanced/sync/
 
 http://qiita.com/reoring/items/a0f3d6186efd11c87f1b
 
-#### Karabiner
+### Karabiner-Elements
 
-http://qiita.com/icb54615/items/9c7a5366e23496bfacd5
+https://pqrs.org/osx/karabiner/document.html#configuration-file-path  
+https://qiita.com/s-show/items/a1fd228b04801477729c
